@@ -1,0 +1,183 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+body {
+  background: radial-gradient(circle at top, #0a0f1f, #000);
+  font-family: "Poppins", sans-serif;
+  color: #e3e8ff;
+  text-align: center;
+  margin: 0;
+  overflow-x: hidden;
+}
+
+/* New wrapper for the entire app, ensuring full height */
+.app-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100%;
+}
+
+.feedback-btn {
+  position: fixed;
+  bottom: 25px;
+  left: 25px;
+  background: linear-gradient(90deg, #5a6aff, #9a6bff);
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 30px;
+  cursor: pointer;
+  font-weight: 600;
+  box-shadow: 0 0 15px rgba(100, 150, 255, 0.4);
+  transition: transform 0.2s;
+  z-index: 40;
+  display: flex;
+  align-items: center;
+}
+
+.feedback-btn:hover {
+  transform: scale(1.08);
+}
+
+.feedback-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 20, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 50;
+}
+
+.feedback-box {
+  background: #0f1630;
+  border-radius: 15px;
+  padding: 30px;
+  width: 350px;
+  box-shadow: 0 0 25px rgba(0, 120, 255, 0.4);
+  position: relative;
+}
+
+.feedback-box h2 {
+  color: #9cc8ff;
+  font-weight: 700;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  text-shadow: 0 0 8px rgba(156, 200, 255, 0.5);
+}
+
+.feedback-box textarea {
+  width: 100%;
+  height: 100px;
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 15px 0;
+  background: #1b2445;
+  color: #fff;
+  font-family: inherit;
+  resize: vertical;
+  outline: none;
+}
+.feedback-box textarea:focus {
+    box-shadow: 0 0 0 2px #9a6bff;
+}
+
+
+.feedback-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.feedback-actions button {
+  margin: 0;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background: linear-gradient(90deg, #6b7bff, #b06bff);
+  color: white;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+.feedback-actions button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.feedback-actions button:last-child {
+    background: #4a547a;
+}
+.feedback-actions button:last-child:hover {
+    background: #5a648a;
+}
+
+
+.instagram-btn {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  background: linear-gradient(90deg, #ff5a5a, #ff6b9a);
+  color: white;
+  padding: 14px 22px;
+  border-radius: 35px;
+  font-weight: 600;
+  box-shadow: 0 0 20px rgba(255, 100, 180, 0.5);
+  animation: pulse 2s infinite;
+  text-decoration: none;
+  z-index: 40;
+  display: flex;
+  align-items: center;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.07); }
+  100% { transform: scale(1); }
+}
+
+/* Animations from index.html (now in App.css) */
+@keyframes fade-in {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+.animate-fade-in {
+  animation: fade-in 0.3s ease-out forwards;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .feedback-btn, .instagram-btn {
+    padding: 10px 18px;
+    font-size: 0.9rem;
+  }
+  .feedback-btn .text-xl, .instagram-btn .text-xl {
+      font-size: 1.5rem; /* Adjust icon size from Tailwind text-xl to 1.5rem for consistency */
+      margin-right: 0.5rem; /* Equivalent to mr-2 */
+  }
+  .feedback-btn span, .instagram-btn span {
+      display: none; /* Hide text on smaller screens to save space */
+  }
+  .feedback-btn, .instagram-btn {
+      width: 50px; /* Make buttons round */
+      height: 50px;
+      justify-content: center;
+      align-items: center;
+      padding: 0; /* Remove padding for round buttons */
+  }
+  .feedback-btn .text-xl.mr-2, .instagram-btn .text-xl.mr-2 {
+      margin-right: 0; /* Remove margin for centered icon */
+  }
+  .feedback-box {
+      width: 95%; /* Adjust width for small screens */
+      padding: 20px;
+  }
+  .feedback-box h2 {
+      font-size: 1.3rem;
+  }
+}

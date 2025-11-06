@@ -1,0 +1,512 @@
+/* ====== Brand Tokens ====== */
+:root {
+  --bg: #100C1F;
+  --pri: #BE82FF;
+  --grad: linear-gradient(90deg, #d946ef, #a855f7);
+  --btn-grad: linear-gradient(90deg, #A855F7, #6D28D9);
+  --shadow-neon: 0 0 22px rgba(168, 85, 247, 0.28);
+}
+
+
+/* Inherits general styles from App.css */
+
+.travelmundo-page-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  min-height: 100vh;
+  width: 100%;
+  box-sizing: border-box;
+  color: #e3e8ff; /* Default text color */
+  background-color: var(--bg);
+  background-image: radial-gradient(at 20% 20%, hsla(259, 61%, 15%, 1) 0px, transparent 50%),
+                    radial-gradient(at 80% 80%, hsla(279, 61%, 15%, 1) 0px, transparent 50%);
+}
+
+.travelmundo-header {
+  padding: 2rem 0;
+  text-align: center;
+}
+
+.travelmundo-header .title {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  max-width: 800px;
+  background: var(--grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 0 18px rgba(168, 85, 247, .2));
+  text-shadow: none;
+}
+
+.travelmundo-header .subtitle {
+  font-size: 1rem;
+  color: #b0b7d6;
+  margin-bottom: 2rem;
+  max-width: 700px;
+}
+
+.back-btn {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  background: rgba(190, 130, 255, 0.1);
+  color: var(--muted);
+  border: 1px solid rgba(190, 130, 255, 0.2);
+  padding: 10px 18px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.back-btn:hover {
+  transform: translateX(-5px) scale(1.05);
+  background: rgba(190, 130, 255, 0.2);
+  color: white;
+  border-color: var(--pri);
+}
+
+.language-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  gap: 5px;
+  background: #111a33;
+  border-radius: 20px;
+  padding: 5px;
+  z-index: 40;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.language-toggle button {
+  background: transparent;
+  border: none;
+  color: #b0b7d6;
+  padding: 8px 12px;
+  border-radius: 15px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.language-toggle button.active {
+  background: var(--btn-grad);
+  color: white;
+  box-shadow: var(--shadow-neon);
+}
+
+.language-toggle button:not(.active):hover {
+  background: rgba(107, 180, 255, 0.1);
+  color: #e3e8ff;
+}
+
+
+.travelmundo-content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 900px;
+  margin: 2rem auto;
+}
+
+.input-section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  margin-bottom: 30px;
+}
+
+/* Upload Area */
+.upload-area {
+  background: #111a33;
+  border: 2px dashed var(--pri);
+  border-radius: 15px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 220px;
+  width: 100%;
+  max-width: 500px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin: 0 auto;
+}
+
+.upload-area:hover {
+  border-color: var(--pri);
+  box-shadow: var(--shadow-neon);
+}
+
+.upload-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  color: #b0b7d6;
+  font-size: 1.1rem;
+  cursor: pointer;
+  text-align: center;
+}
+
+.uploaded-image-preview {
+  max-width: 100%;
+  max-height: 180px;
+  border-radius: 10px;
+  object-fit: contain;
+  margin-bottom: 10px;
+}
+
+.uploaded-image-text-info {
+  font-size: 0.9rem;
+  color: #9cc8ff;
+  margin-top: 5px;
+}
+
+.hidden-file-input {
+  display: none;
+}
+
+.error-message {
+  color: #ff6b6b;
+  margin-top: 15px;
+  font-size: 0.9rem;
+}
+
+/* Dropdowns and Optional Fields */
+.dropdowns-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  width: 100%;
+}
+
+.dropdown-container, .input-field-container, .dropdown-container-group {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.dropdown-container label, .input-field-container label, .dropdown-container-group label {
+  color: #9cc8ff; /* Lilac-blue glow */
+  font-size: 0.9rem;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.dropdown-container input, .dropdown-container select, .input-field-container input {
+  background: #1c2544;
+  border: 1px solid #2a3a77;
+  border-radius: 8px;
+  padding: 10px 15px;
+  color: #e3e8ff;
+  font-family: inherit;
+  font-size: 1rem;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.dropdown-container input:hover, .dropdown-container select:hover, .input-field-container input:hover {
+  border-color: var(--pri);
+}
+.dropdown-container input:focus, .dropdown-container select:focus, .input-field-container input:focus {
+  border-color: var(--pri);
+  box-shadow: 0 0 0 3px rgba(180, 130, 255, 0.3);
+}
+
+/* Custom dropdown arrow */
+.dropdown-container {
+  position: relative;
+}
+.dropdown-container::after {
+  content: '▼';
+  position: absolute;
+  right: 15px;
+  top: 70%;
+  transform: translateY(-50%);
+  color: #b0b7d6;
+  pointer-events: none;
+  font-size: 0.8rem;
+}
+.dropdown-container select {
+  padding-right: 30px;
+}
+
+.dropdowns-inline {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+/* Preset Message */
+.preset-message {
+  background: #33cc33; /* Neon green background */
+  color: #000; /* Black text for contrast */
+  padding: 12px 20px;
+  border-radius: 8px;
+  margin-top: 20px;
+  font-weight: 600;
+  font-size: 1rem;
+  box-shadow: 0 0 15px rgba(51, 204, 51, 0.7); /* Green glow */
+  animation: fade-in-up 0.3s ease-out forwards, fade-out 0.5s ease-out 2.5s forwards; /* Fade in then fade out */
+  position: sticky; /* Or absolute/fixed depending on desired placement */
+  top: 100px; /* Adjust as needed */
+  z-index: 100;
+  width: fit-content;
+  text-align: center;
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+/* Action Buttons */
+.action-buttons-group {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 30px;
+  margin-bottom: 40px;
+  width: 100%;
+}
+
+.main-action-btn, .secondary-action-btn {
+  padding: 12px 25px;
+  border-radius: 30px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.main-action-btn {
+  background: var(--btn-grad);
+  color: white;
+  box-shadow: var(--shadow-neon);
+  min-width: 250px;
+  font-size: 1.1rem;
+}
+
+.main-action-btn:hover:not(:disabled) {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 10px 24px rgba(168, 85, 247, 0.4);
+}
+
+.main-action-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  background: #6c77a1;
+  box-shadow: none;
+}
+
+.secondary-action-btn {
+  background: transparent;
+  color: var(--pri);
+  border: 2px solid var(--pri);
+  min-width: 180px;
+  box-shadow: none;
+}
+
+.secondary-action-btn:hover:not(:disabled) {
+  background: var(--pri);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-neon);
+}
+
+.secondary-action-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background: transparent;
+  border-color: #4a547a;
+  color: #6c77a1;
+}
+
+
+/* Output Section */
+.output-section {
+  width: 100%;
+  min-height: 350px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.generated-image-preview-container {
+  background: linear-gradient(145deg, #111a33, #1c2544);
+  border: 2px solid;
+  border-image: var(--grad) 1;
+  border-radius: 18px;
+  padding: 15px;
+  box-shadow: var(--shadow-neon);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 600px;
+  min-height: 300px;
+  overflow: hidden;
+}
+
+.generated-image-output {
+  max-width: 100%;
+  max-height: 550px;
+  display: block;
+  border-radius: 10px;
+  object-fit: contain;
+}
+
+.placeholder-image-preview {
+  background: #1c2544;
+  border: 2px dashed #4a547a;
+  border-radius: 15px;
+  color: #b0b7d6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 600px;
+  min-height: 300px;
+  font-size: 1.1rem;
+}
+
+/* Generation Loader (reused) */
+.generation-loader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 300px;
+  width: 100%;
+}
+
+.spinner {
+  border: 8px solid rgba(255, 255, 255, 0.2);
+  border-left-color: var(--pri);
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  animation: spin 1.2s linear infinite;
+  margin-bottom: 20px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.generation-loader p {
+  color: #e3e8ff;
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-shadow: 0 0 8px rgba(180, 130, 255, 0.5);
+}
+
+.travelmundo-footer {
+  margin-top: 60px;
+  padding: 20px;
+  font-size: 0.85rem;
+  color: #8c93b5;
+  background: #0a0f1f;
+  border-top: 1px solid #2a3a77;
+  width: 100%;
+}
+
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .travelmundo-header .title {
+    font-size: 1.8rem;
+  }
+  .travelmundo-header .subtitle {
+    font-size: 0.85rem;
+  }
+  .upload-area {
+    min-height: 180px;
+    padding: 20px;
+  }
+  .uploaded-image-preview {
+    max-height: 150px;
+  }
+  .dropdowns-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+  .dropdowns-inline {
+    grid-template-columns: 1fr;
+  }
+  .action-buttons-group {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .main-action-btn, .secondary-action-btn {
+    width: 100%;
+    min-width: unset;
+  }
+  .generated-image-preview-container, .placeholder-image-preview {
+    min-height: 250px;
+    padding: 10px;
+  }
+  .generated-image-output {
+    max-height: 350px;
+  }
+
+  .back-btn {
+    top: 15px;
+    left: 15px;
+    padding: 8px 15px;
+    font-size: 0.9rem;
+  }
+  .back-btn .mr-2 {
+    margin-right: 0.5rem;
+  }
+
+  .language-toggle {
+    top: 15px;
+    right: 15px;
+    padding: 3px;
+    gap: 2px;
+  }
+  .language-toggle button {
+    padding: 6px 9px;
+    font-size: 0.8rem;
+  }
+}

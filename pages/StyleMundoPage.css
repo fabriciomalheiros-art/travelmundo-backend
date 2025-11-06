@@ -1,0 +1,636 @@
+/* ====== Brand Tokens ====== */
+:root {
+  --bg: #100C1F;
+  --pri: #BE82FF;
+  --grad: linear-gradient(90deg, #d946ef, #a855f7);
+  --btn-grad: linear-gradient(90deg, #A855F7, #6D28D9);
+  --shadow-neon: 0 0 22px rgba(168, 85, 247, 0.28);
+}
+
+/* Base styles from App.css are generally inherited, but we need specifics for this page */
+
+.stylemundo-page-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  min-height: 100vh;
+  width: 100%;
+  box-sizing: border-box; /* Ensure padding doesn't cause overflow */
+  color: #e3e8ff; /* Default text color */
+  background-color: var(--bg);
+  background-image: radial-gradient(at 20% 20%, hsla(259, 61%, 15%, 1) 0px, transparent 50%),
+                    radial-gradient(at 80% 80%, hsla(279, 61%, 15%, 1) 0px, transparent 50%);
+}
+
+.stylemundo-header {
+  padding: 2rem 0;
+  text-align: center;
+}
+
+.stylemundo-header .title {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  max-width: 800px;
+  background: var(--grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 0 18px rgba(168, 85, 247, .2));
+  text-shadow: none;
+}
+
+.stylemundo-header .subtitle {
+  font-size: 1rem;
+  color: #b0b7d6;
+  margin-bottom: 2rem;
+  max-width: 700px;
+}
+
+.back-btn {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  background: rgba(190, 130, 255, 0.1);
+  color: var(--muted);
+  border: 1px solid rgba(190, 130, 255, 0.2);
+  padding: 10px 18px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.back-btn:hover {
+  transform: translateX(-5px) scale(1.05);
+  background: rgba(190, 130, 255, 0.2);
+  color: white;
+  border-color: var(--pri);
+}
+
+.stylemundo-content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 900px; /* Constrain content width */
+  margin: 2rem auto; /* Add margin to separate from back button and bottom */
+  position: relative; /* For loader positioning */
+}
+
+.input-section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  margin-bottom: 30px;
+}
+
+.option-group { /* This class is now implicitly handled by dropdowns-grid, can be removed if not reused */
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px; /* Spacing between title and options grid */
+  margin-top: 1.5rem; /* Spacing between option groups */
+}
+
+.step-title { /* This class is now label in dropdown-container */
+  font-size: 2rem;
+  font-weight: 700;
+  color: #9cc8ff;
+  text-shadow: 0 0 8px rgba(156, 200, 255, 0.5);
+  margin-bottom: 0.5rem; /* Adjusted for option-group gap */
+}
+
+.step-subtitle { /* Not used in new TSX */
+  color: #b0b7d6;
+  font-size: 0.95rem;
+  margin-bottom: 2rem;
+  max-width: 600px;
+}
+
+/* Upload Area */
+.upload-area {
+  background: #111a33;
+  border: 2px dashed var(--pri);
+  border-radius: 15px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 250px;
+  width: 100%;
+  max-width: 500px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin: 0 auto; /* Center upload area */
+}
+
+.upload-area:hover {
+  border-color: var(--pri);
+  box-shadow: var(--shadow-neon);
+}
+
+.upload-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  color: #b0b7d6;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+.uploaded-image-preview {
+  max-width: 100%;
+  max-height: 200px;
+  border-radius: 10px;
+  object-fit: contain;
+  margin-bottom: 10px;
+}
+
+.hidden-file-input {
+  display: none;
+}
+
+.error-message {
+  color: #ff6b6b;
+  margin-top: 15px;
+  font-size: 0.9rem;
+}
+
+/* Dropdowns */
+.dropdowns-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  width: 100%;
+  margin-top: 2rem;
+}
+
+.dropdown-container {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  position: relative; /* For custom arrow */
+}
+
+.dropdown-container label {
+  color: #9cc8ff; /* Consistent with step-title glow */
+  font-size: 1rem; /* Slightly smaller than former step-title */
+  margin-bottom: 8px;
+  font-weight: 600;
+  text-shadow: 0 0 5px rgba(156, 200, 255, 0.3);
+}
+
+.dropdown-container select {
+  background: #1c2544;
+  border: 1px solid #2a3a77;
+  border-radius: 8px;
+  padding: 10px 15px;
+  color: #e3e8ff;
+  font-family: inherit;
+  font-size: 1rem;
+  appearance: none; /* Remove default dropdown arrow */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  padding-right: 30px; /* Space for custom arrow */
+}
+
+.dropdown-container select:hover {
+  border-color: var(--pri);
+}
+.dropdown-container select:focus {
+  border-color: var(--pri);
+  box-shadow: 0 0 0 3px rgba(180, 130, 255, 0.3);
+}
+
+.dropdown-container::after {
+  content: '▼';
+  position: absolute;
+  right: 15px;
+  top: 68%; /* Adjust to center vertically with text */
+  transform: translateY(-50%);
+  color: #b0b7d6;
+  pointer-events: none; /* Make arrow clickable through */
+  font-size: 0.8rem; /* Smaller, subtler arrow */
+}
+
+
+/* Confirmation Message */
+.selection-confirmation {
+  background: #33cc33; /* Neon green background */
+  color: #000; /* Black text for contrast */
+  padding: 12px 20px;
+  border-radius: 8px;
+  margin-top: 20px;
+  font-weight: 600;
+  font-size: 1rem;
+  box-shadow: 0 0 15px rgba(51, 204, 51, 0.7); /* Green glow */
+  animation: fade-in-up 0.3s ease-out forwards, fade-out 0.5s ease-out 2.5s forwards; /* Fade in then fade out */
+  position: sticky; /* Or absolute/fixed depending on desired placement */
+  top: 100px; /* Adjust as needed */
+  z-index: 100;
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+
+/* Action Buttons */
+.action-buttons-group {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 30px;
+  margin-bottom: 40px;
+  width: 100%;
+}
+
+.main-action-btn, .secondary-action-btn {
+  padding: 12px 25px;
+  border-radius: 30px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.main-action-btn {
+  background: var(--btn-grad);
+  color: white;
+  box-shadow: var(--shadow-neon);
+  min-width: 250px;
+  font-size: 1.1rem;
+}
+
+.main-action-btn:hover:not(:disabled) {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 10px 24px rgba(168, 85, 247, 0.4);
+}
+
+.main-action-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  background: #6c77a1;
+  box-shadow: none;
+}
+
+.secondary-action-btn {
+  background: transparent;
+  color: var(--pri);
+  border: 2px solid var(--pri);
+  min-width: 180px;
+  box-shadow: none;
+}
+
+.secondary-action-btn:hover:not(:disabled) {
+  background: var(--pri);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-neon);
+}
+.secondary-action-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background: transparent;
+  border-color: #4a547a;
+  color: #6c77a1;
+}
+
+/* Output Section */
+.output-section {
+  width: 100%;
+  min-height: 400px; /* Increased height for generated images */
+  display: flex;
+  flex-direction: column; /* Allow content to stack */
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+/* Wrapper for generated content including messages and download all button */
+.generated-content-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  max-width: 900px;
+}
+
+/* Success Message */
+.generation-success-message {
+  background: #33cc33; /* Neon green background */
+  color: #000; /* Black text for contrast */
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1rem;
+  box-shadow: 0 0 15px rgba(51, 204, 51, 0.7); /* Green glow */
+  width: fit-content;
+  text-align: center;
+}
+
+/* Download All Button */
+.download-all-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.download-all-btn {
+  padding: 12px 30px;
+  border-radius: 30px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--btn-grad);
+  color: white;
+  box-shadow: var(--shadow-neon);
+  font-size: 1.05rem;
+}
+.download-all-btn:hover:not(:disabled) {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 10px 24px rgba(168, 85, 247, 0.4);
+}
+.download-all-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  background: #6c77a1;
+  box-shadow: none;
+}
+
+
+/* Grid Gallery for multiple images (Ensaio Fotográfico Completo) */
+.grid-gallery-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columns for desktop */
+  gap: 20px;
+  width: 100%;
+  max-width: 900px; /* Max width for the grid */
+  margin-top: 20px; /* Space from download all button */
+}
+
+.gallery-item {
+  position: relative;
+  background: linear-gradient(145deg, #111a33, #1c2544);
+  border: 1px solid #2a3a77;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  will-change: transform; /* Hint to browser for smoother animation */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px; /* Ensure a minimum height for items */
+}
+
+.gallery-item:hover {
+  transform: scale(1.03); /* Slight zoom on hover */
+  box-shadow: var(--shadow-neon);
+  border-color: var(--pri);
+}
+
+.generated-image-output-grid {
+  width: 100%;
+  height: 100%; /* Take full height of parent */
+  object-fit: cover; /* Cover the item area, potentially cropping */
+  display: block;
+  border-radius: 10px; /* Match gallery item border radius minus some padding if needed */
+}
+
+/* Small download button on each image */
+.small-download-btn {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background: rgba(190, 130, 255, 0.8);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  cursor: pointer;
+  opacity: 0; /* Hidden by default */
+  transition: opacity 0.3s ease, background 0.2s;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.gallery-item:hover .small-download-btn {
+  opacity: 1; /* Show on hover */
+}
+
+.small-download-btn:hover {
+  background: var(--pri);
+}
+
+
+/* Single image container for other styles (non-essay) */
+.generated-image-preview-container {
+  background: linear-gradient(145deg, #111a33, #1c2544);
+  border: 2px solid;
+  border-image: var(--grad) 1;
+  border-radius: 18px;
+  padding: 15px;
+  box-shadow: var(--shadow-neon);
+  display: flex;
+  flex-direction: column; /* Allow content to stack inside */
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 600px;
+  min-height: 350px; /* Increased min-height */
+  overflow: hidden;
+  position: relative; /* For single-image-download-btn */
+}
+
+.generated-image-output {
+  max-width: 100%;
+  max-height: 700px; /* Increased max height */
+  display: block;
+  border-radius: 10px;
+  object-fit: contain;
+}
+
+.single-image-download-btn {
+  margin-top: 20px; /* Space from the image */
+  background: var(--btn-grad);
+  color: white;
+  box-shadow: var(--shadow-neon);
+  min-width: 150px;
+}
+.single-image-download-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+
+.placeholder-image-preview {
+  background: #1c2544;
+  border: 2px dashed #4a547a;
+  border-radius: 15px;
+  color: #b0b7d6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 600px;
+  min-height: 300px;
+  font-size: 1.1rem;
+}
+
+
+/* Generation Loader */
+.generation-loader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 300px; /* Fixed height for loader area */
+  width: 100%;
+}
+
+.spinner {
+  border: 8px solid rgba(255, 255, 255, 0.2);
+  border-left-color: var(--pri);
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  animation: spin 1.2s linear infinite;
+  margin-bottom: 20px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.generation-loader p {
+  color: #e3e8ff;
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-shadow: 0 0 8px rgba(180, 130, 255, 0.5);
+}
+
+.stylemundo-footer {
+  margin-top: 60px;
+  padding: 20px;
+  font-size: 0.85rem;
+  color: #8c93b5;
+  background: #0a0f1f;
+  border-top: 1px solid #2a3a77;
+  width: 100%; /* Ensure footer spans full width */
+}
+
+/* Responsive adjustments for StyleMundoPage */
+@media (max-width: 1024px) {
+  .grid-gallery-container {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns for tablet */
+  }
+}
+
+@media (max-width: 768px) {
+  .stylemundo-header .title {
+    font-size: 1.8rem;
+  }
+  .stylemundo-header .subtitle {
+    font-size: 0.85rem;
+  }
+  .back-btn {
+    top: 15px;
+    left: 15px;
+    padding: 8px 15px;
+    font-size: 0.9rem;
+  }
+  .back-btn .mr-2 {
+      margin-right: 0.5rem;
+  }
+  
+  .step-title {
+    font-size: 1.5rem;
+  }
+  .step-subtitle {
+    font-size: 0.8rem;
+  }
+  .upload-area {
+    padding: 20px;
+    min-height: 200px;
+  }
+  .dropdowns-grid { /* Adjust grid for dropdowns on mobile */
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+  .action-buttons-group {
+    flex-direction: column;
+    gap: 15px;
+  }
+  .main-action-btn, .secondary-action-btn, .download-all-btn {
+    width: 100%;
+    min-width: unset;
+  }
+  .generated-image-preview-container, .placeholder-image-preview {
+    min-height: 250px;
+    padding: 10px;
+  }
+  .generated-image-output {
+    max-height: 350px;
+  }
+  .generated-image-output-grid {
+    max-height: 250px; /* Adjust height for grid items on mobile */
+  }
+
+  .selection-confirmation, .generation-success-message {
+    font-size: 0.9rem;
+    padding: 10px 15px;
+  }
+
+  /* Responsive adjustments for gallery on small screens */
+  .grid-gallery-container {
+    grid-template-columns: 1fr; /* 1 column for mobile */
+    max-width: 100%;
+  }
+  .gallery-item {
+    min-height: 180px; /* Adjust min height for mobile grid items */
+  }
+}

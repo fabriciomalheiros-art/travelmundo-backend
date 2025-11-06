@@ -1,0 +1,7 @@
+{
+  "name": "Portal TravelMundo IA-V2",
+  "description": "Um portal moderno para explorar módulos de IA da TravelMundo, com geração de imagens, edição de fotos e informações de mapas.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
